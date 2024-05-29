@@ -31,7 +31,9 @@ setup(
         'transformers==4.30.0',
         'protobuf',
         'openai',
-        'pytrec_eval'
+        'pytrec_eval',
+        'pandas',
+        'annoy',
     ],
     extras_require = optional_packages,
     classifiers=[
