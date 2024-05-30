@@ -11,9 +11,11 @@ from data.datastructures.hyperparameters.dpr import DenseHyperParams
 if __name__ == "__main__":
     config_instance = DenseHyperParams(query_encoder_path="facebook-dpr-question_encoder-multiset-base",
                                      document_encoder_path="facebook-dpr-ctx_encoder-multiset-base",
-                                     ann_search="faiss_search",show_progress_bar=True)
+                                     ann_search="faiss_search",show_progress_bar=True, batch_size=32)
 
-    loader = RetrieverDataset("wikimultihopqa","wiki-musiqueqa-corpus","evaluation/config.ini",Split.DEV)
+    #config_path = "C:\\Users\\alexm\\Desktop\\Uni\\nlp_g13_rag_odqa\\evaluation\\config.ini"
+    config_path = "evaluation/config.ini"
+    loader = RetrieverDataset("wikimultihopqa","wiki-musiqueqa-corpus", config_path,Split.DEV)
     queries, qrels, corpus = loader.qrels()
     dpr_sent_search = DprSentSearch(config_instance)
     _ = dpr_sent_search.get_ann_algo(768, 100, "euclidean")
