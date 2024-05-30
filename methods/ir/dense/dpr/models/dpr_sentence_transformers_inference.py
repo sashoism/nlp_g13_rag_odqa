@@ -18,9 +18,9 @@ class DprSentSearch():
 
     def __init__(self,
                  config: DenseHyperParams):
-        self.query_encoder = SentenceTransformer(config.query_encoder_path, device='cuda:1')
+        self.query_encoder = SentenceTransformer(config.query_encoder_path, device='cuda:0')
         self.document_encoder = SentenceTransformer(
-            config.document_encoder_path, device='cuda:1')
+            config.document_encoder_path, device='cuda:0')
         self.documents = {}
         self.titles = {}
         self.data = []
