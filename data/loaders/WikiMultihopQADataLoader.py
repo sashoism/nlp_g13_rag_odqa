@@ -31,12 +31,15 @@ class WikiMultihopQADataLoader(GenericDataLoader):
                 #for evidence in evidence_set[1]:
                 evidence = " ".join(evidence_set[1])
                 #print(list(self.titles).index(title.split(" - ")[0]))
-                self.raw_data.append(
-                    Sample(query_index, Question(data["question"],idx=data["_id"]), Answer(data["answer"]),
-                            Evidence(text=evidence, 
-                                    idx=list(self.titles).index(title.split(" - ")[0]),title=title)
-                ))
-
+                try:
+                    self.raw_data.append(
+                        Sample(query_index, Question(data["question"],idx=data["_id"]), Answer(data["answer"]),
+                                Evidence(text=evidence, 
+                                        idx=list(self.titles).index(title.split(" - ")[0]),title=title)
+                    ))
+                except:
+                    continue
+                
     def load_tokenized(self):
         if self.tokenized_path and os.path.exists(self.tokenized_path):
             self.logger.info("Loading DPR data from {}".format(self.tokenized_path))
