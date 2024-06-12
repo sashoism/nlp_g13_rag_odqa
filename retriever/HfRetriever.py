@@ -166,7 +166,7 @@ class HfRetriever(BaseRetriver):
         embeddings, index_present = self.load_index_if_available()
 
         #TODO:Comment below for index usage
-        index_present = False
+        # index_present = False
         if index_present:
             corpus_embeddings = embeddings
         else:
