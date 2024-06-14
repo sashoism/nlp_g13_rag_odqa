@@ -3,6 +3,7 @@ node_modules
 __pycache__/
 /tests/corpus_utils/dataset/*
 /indices/*
+.idea
 
 dataset/
 !dataset/download.sh
